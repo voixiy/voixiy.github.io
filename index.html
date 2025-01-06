@@ -7,6 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        .glowing-text {
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 0 0 20px #353535, 0 0 20px #fff, 0 0 20px #fff;
+        }
         body {
             margin: 0;
             font-family: 'Montserrat', Arial, sans-serif;
@@ -20,8 +25,9 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
         }
-
         body::before {
             content: "";
             position: absolute;
@@ -29,113 +35,138 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6); 
+            background: rgba(0, 0, 0, 0.6);
             z-index: 1;
         }
-
         .container {
             background: rgba(0, 0, 0, 0.6);
             border-radius: 30px;
-            padding: 20px;
-            width: 60%;
+            border-style: solid;
+            border-color: #292929;
+            padding: 40px;
+            width: 45%;
+            height: 45%;
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
+            position: relative;
+            flex-direction: column;
             z-index: 2;
         }
-
         .profile-section {
-            text-align: left;
-            flex: 1;
-            padding: 20px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
         }
-
         .profile-img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            margin-bottom: 20px;
+            margin-right: 20px;
         }
-
-        h1 {
+        .profile-text h1 {
             font-size: 2rem;
-            margin-bottom: 10px;
+            margin: 0;
         }
-
-        p {
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-
         .button-section {
-            text-align: right;
-            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 150px;
+            width: 100%;
+            z-index: 3;
         }
-
         .button {
             display: inline-block;
-            margin: 10px 0;
-            padding: 10px 20px;
+            margin: 0 10px;
+            padding: 20px 20px;
+            height: 120%;
             font-size: 1rem;
-            border: none;
-            border-radius: 100px;
+            border-style: solid;
+            border-color: #343434;
+            border-width: 2px;
+            border-radius: 15px;
             cursor: pointer;
             text-decoration: none;
             color: #fff;
+            background: rgba(47, 47, 47, 0.3);
             transition: transform 0.3s;
+            color: #fff;
+            text-shadow: 0 0 20px #353535, 0 0 20px #fff, 0 0 20px #000000;
         }
-
-        .button-blue {
-            background: rgb(0,126,196);
-            background: linear-gradient(93deg, rgba(0,126,196,1) 0%, rgba(0,79,232,1) 20%);
+        .icon-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            z-index: 3;
         }
-
-        .button-black {
-            background: rgb(68,68,68);
-            background: linear-gradient(93deg, rgba(68,68,68,1) 0%, rgba(37,37,37,1) 20%);
-        }
-
-        .button-red {
-            background: rgb(208,86,97);
-            background: linear-gradient(93deg, rgba(208,86,97,1) 0%, rgba(255,75,92,1) 20%);
-        }
-
         .button i {
             margin-right: 8px;
             font-size: 1.2rem;
             vertical-align: middle;
         }
-
         .button:hover {
             transform: scale(1.1);
         }
-
-        .button-section {
-            text-align: right;
+        .social-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px;
+            font-size: 1.8rem;
+            border-radius: 50%;
+            background-color: rgba(47, 47, 47, 0.6);
+            color: #fff;
+            transition: transform 0.3s;
+            text-decoration: none;
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-         }
-
+            justify-content: center;
+            align-items: center;
+            background: none;
+            text-shadow: 0 0 20px #353535, 0 0 20px #fff, 0 0 20px #000000;
+        }
+        .social-button i {
+            font-size: 2rem;
+            color: #fff;
+            background: none;
+        }
+        .social-button:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
+    <audio autoplay>
+      <source src="https://dn720306.ca.archive.org/0/items/soundcloud-1341492589/1341492589.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
     <div class="container">
         <div class="profile-section">
             <img src="https://images-ext-1.discordapp.net/external/NJY2rCjEuYk2_HRMxfVbSyQtNOzz_Ss9Kl7faf-AYDw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1136641829337583676/07c55951bb1bd970f4a94e8c338c1640.png?format=webp&quality=lossless&width=417&height=417" alt="Profile Picture" class="profile-img">
-            <h1>Voix</h1>
-            <p>Heyo wassup, I am Voix. I am 14 and I am from Kazakhstan, and my hobby is programming. Also, <i>follow me on GitHub or else >:3.</i></p>
+            <div class="profile-text">
+                <h1 class="glowing-text">Voix</h1>
+                <p>i make things</p>
+            </div>
         </div>
-
         <div class="button-section">
-            <a href="https://github.com/voixiy" class="button button-black">
-                <i class="fab fa-github"></i> Github Profile
-            </a>
             <a href="https://discord.gg/wSVT5GRkCx" class="button button-blue">
-                <i class="fab fa-discord"></i> Discord Server
+                <i class="fab fa-discord"></i> voix's basement
             </a>
-            <a href="https://www.youtube.com/@voixiy" class="button button-red">
-                <i class="fab fa-youtube"></i> Youtube Channel
+        </div>
+        <div class="icon-section">
+            <a href="https://github.com/voixiy" class="social-button">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.youtube.com/@voixiy" class="social-button">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://open.spotify.com/user/31xtu7c66l5sdqw6oywe7eba3pfy" class="social-button">
+                <i class="fab fa-spotify"></i>
             </a>
         </div>
     </div>
